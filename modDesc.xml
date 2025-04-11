@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<modDesc descVersion="96">
+<modDesc descVersion="97">
 	<author>Rockstar</author>
 
-	<version>1.0.0.3</version>
+	<version>1.0.0.4</version>
 
 	<title>
 		<en>Additional Game Settings</en>
@@ -46,7 +46,10 @@ Changelog 1.0.0.2:
 
 Changelog 1.0.0.3:
 - Fixed an issue with the unavailable HUD color change option,
-- Fixed the error ".../AdditionalSettings.lua:1363: attempt to index nil with 'delete'".]]></en>
+- Fixed the error ".../AdditionalSettings.lua:1363: attempt to index nil with 'delete'".
+
+Changelog 1.0.0.4:
+- Fixed the function "Easier engine starting", which was not working after patch 1.7.0.0.]]></en>
 		<de>
 			<![CDATA[Diese Mod fügt dem Pausenmenü einen neuen Einstellungstab hinzu.
 
@@ -80,7 +83,10 @@ Changelog 1.0.0.2:
 
 Changelog 1.0.0.3:
 - Ein Problem mit der nicht verfügbaren HUD-Farbänderungsoption wurde behoben,
-- Fehler ".../AdditionalSettings.lua:1363: attempt to index nil with 'delete'" wurde behoben.]]></de>
+- Fehler ".../AdditionalSettings.lua:1363: attempt to index nil with 'delete'" wurde behoben.
+
+Changelog 1.0.0.4:
+- Die Funktion "Einfacherer Motorstart", die nach Patch 1.7.0.0 nicht funktionierte, wurde behoben.]]></de>
 		<fr>
 			<![CDATA[Ce mod ajoute un nouvel onglet de paramètres au menu pause.
 
@@ -114,7 +120,10 @@ Changelog 1.0.0.2:
 
 Changelog 1.0.0.3:
 - Correction d’un problème avec l’option de changement de couleur du HUD indisponible.
-- Correction de l'erreur ".../AdditionalSettings.lua:1363: attempt to index nil with 'delete'".]]></fr>
+- Correction de l'erreur ".../AdditionalSettings.lua:1363: attempt to index nil with 'delete'".
+
+Changelog 1.0.0.4:
+- Correction de la fonction "Démarrage moteur simplifié" qui ne fonctionnait plus après le patch 1.7.0.0.]]></fr>
 		<pl>
 			<![CDATA[Ten mod dodaje zakładkę z nowymi ustawieniami do menu pauzy.
 
@@ -148,7 +157,10 @@ Changelog 1.0.0.2:
 
 Changelog 1.0.0.3:
 - Naprawiono problem z niedostepną opcją zmiany koloru HUD-ów,
-- Naprawiono błąd ".../AdditionalSettings.lua:1363: attempt to index nil with 'delete'".]]></pl>
+- Naprawiono błąd ".../AdditionalSettings.lua:1363: attempt to index nil with 'delete'".
+
+Changelog 1.0.0.4:
+- Naprawiono funkcję "Uproszczone uruchamianie silnika", która nie działała po patchu 1.7.0.0.]]></pl>
 		<ru>
 			<![CDATA[Этот мод добавляет новую вкладку настроек в меню паузы.
 
@@ -182,7 +194,10 @@ Changelog 1.0.0.2:
 
 Changelog 1.0.0.3:
 - Исправлена проблема с недоступной опцией изменения цвета HUD,
-- Исправлена ошибка ".../AdditionalSettings.lua:1363: attempt to index nil with 'delete'".]]></ru>
+- Исправлена ошибка ".../AdditionalSettings.lua:1363: attempt to index nil with 'delete'".
+
+Changelog 1.0.0.4:
+- Исправлена функция "Упрощённый запуск двигателя", не работавшая после патча 1.7.0.0.]]></ru>
 	</description>
 
 	<iconFilename>icon_additionalGameSettings.png</iconFilename>
