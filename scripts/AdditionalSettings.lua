@@ -917,7 +917,7 @@ local EasyMotorStartSetting_mt = Class(EasyMotorStartSetting)
 function EasyMotorStartSetting.new(custom_mt)
 	local self = setmetatable({}, custom_mt or EasyMotorStartSetting_mt)
 
-	AdditionalSettingsUtil.overwrittenFunction(Vehicle, "addPoweredActionEvent", self, "addPoweredActionEvent")
+	AdditionalSettingsUtil.overwrittenFunction(Drivable, "actionEventAccelerate", self, "actionEventAccelerate")
 
 	self.active = false
 	self.loadState = AdditionalSettingsManager.LOAD_STATE.MAP_LOAD
@@ -929,24 +929,29 @@ function EasyMotorStartSetting:onTabOpen(checkboxElement)
 	checkboxElement:setDisabled(g_currentMission.missionInfo.automaticMotorStartEnabled)
 end
 
-function EasyMotorStartSetting:addPoweredActionEvent(vehicle, superFunc, actionEventsTable, inputAction, target, callback, triggerUp, triggerDown, triggerAlways, startActive, callbackState, customIconName, ignoreCollisions, reportAnyDeviceCollision)
-	local function newCallback(object, actionName, inputValue, state, isAnalog, isMouse, deviceCategory, binding)
-		local isPowered, warning = object:getIsPowered()
+function EasyMotorStartSetting:actionEventAccelerate(drivable, superFunc, actionName, inputValue, callbackState, isAnalog)
+	if inputValue ~= 0 then
+		local isPowered, isPoweredWarning = drivable:getIsPowered()
 
-		if isPowered then
-			callback(object, actionName, inputValue, state, isAnalog, isMouse, deviceCategory, binding)
-		elseif inputValue ~= 0 and warning ~= nil then
-			if self.active and vehicle.spec_drivable ~= nil and vehicle.spec_drivable.actionEvents == actionEventsTable and inputAction == InputAction.AXIS_ACCELERATE_VEHICLE and not g_currentMission.missionInfo.automaticMotorStartEnabled then
-				if not vehicle:getIsAIActive() and not vehicle:getIsMotorStarted() and vehicle:getCanMotorRun() then
-					vehicle:startMotor()
-				end
+		if not isPowered and isPoweredWarning ~= nil then
+			if self.active and not drivable:getIsAIActive() and not drivable:getIsMotorStarted() and drivable:getCanMotorRun() and isPoweredWarning == g_i18n:getText("warning_motorNotStarted") then
+				drivable:startMotor()
 			else
-				g_currentMission:showBlinkingWarning(warning, 2000)
+				g_currentMission:showBlinkingWarning(isPoweredWarning, 2000)
 			end
 		end
-	end
 
-	return vehicle:addActionEvent(actionEventsTable, inputAction, target, newCallback, triggerUp, triggerDown, triggerAlways, startActive, callbackState, customIconName, ignoreCollisions, reportAnyDeviceCollision)
+		local isAllowed, warning = drivable:getIsPlayerVehicleControlAllowed()
+
+		if isAllowed then
+			drivable:setAccelerationPedalInput(inputValue)
+			return
+		end
+
+		if warning ~= nil then
+			g_currentMission:showBlinkingWarning(warning, 2000)
+		end
+	end
 end
 
 
